@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+#quote-box {
+  background-color: #ffffff !important;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.5s ease;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+#quote-box p {
+  color: inherit;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #1da1f2;
+  cursor: pointer;
+}
+
+a i {
+  margin-right: 5px;
+}
