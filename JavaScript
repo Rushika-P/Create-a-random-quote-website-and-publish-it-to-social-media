@@ -1,0 +1,66 @@
+const quotes = [
+  {
+    text:
+      "The best time to plant a tree was 20 years ago. The second best time is now.",
+    author: "- Chinese Proverb"
+  },
+  {
+    text:
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    author: "- Winston Churchill"
+  },
+  {
+    text:
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    author: "- Winston Churchill"
+  },
+  {
+    text:
+      "The best time to plant a tree was 20 years ago. The second best time is now.",
+    author: "- Chinese Proverb"
+  }
+];
+
+function generateRandomQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+
+  document.getElementById("text").innerHTML = quote.text;
+  document.getElementById("author").innerHTML = quote.author;
+
+  const randomColor = getRandomColor();
+  document.body.style.backgroundColor = randomColor;
+  document.getElementById("quote-box").style.backgroundColor = randomColor;
+
+  const textColor = isDarkColor(randomColor) ? "#ffffff" : "#000000";
+  document.getElementById("text").style.color = textColor;
+  document.getElementById("author").style.color = textColor;
+
+  const tweetText = encodeURIComponent(`"${quote.text}" ${quote.author}`);
+  const tweetLink = `https://twitter.com/intent/tweet?text=${tweetText}`;
+  document.getElementById("tweet-quote").setAttribute("href", tweetLink);
+}
+
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function isDarkColor(color) {
+  const hex = color.replace("#", "");
+  const r = parseInt(hex.substr(0, 2), 16);
+  const g = parseInt(hex.substr(2, 2), 16);
+  const b = parseInt(hex.substr(4, 2), 16);
+  const luminance = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+  return luminance < 0.5;
+}
+
+document
+  .getElementById("new-quote")
+  .addEventListener("click", generateRandomQuote);
+
+generateRandomQuote();
